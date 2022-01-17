@@ -13,7 +13,12 @@
     <div class="container pt-4">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-
+                <div id="success_message" class="alert alert-success alert-dismissible fade show" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <strong id="message"> </strong>
+                </div>
                 <form id="form">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Name</label>
@@ -63,11 +68,10 @@
                         document.getElementById('ageerror').innerHTML = response.data.ageerror;
                     }
                     if (response.data.success) {
-                        alert(response.data.success);
+                        // alert(response.data.success);
+                        document.getElementById('success_message').style.display = 'block';
+                        document.getElementById('message').innerHTML = response.data.success;
                     }
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 2000);
                     // location.href = 'index.php';
                 })
                 .catch(function(error) {
